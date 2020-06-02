@@ -1,4 +1,5 @@
 import time
+from binary_search_tree import BinarySearchTree
 
 start_time = time.time()
 
@@ -12,11 +13,34 @@ f.close()
 
 duplicates = []  # Return the list of duplicates in this data structure
 
+# bst = BinarySearchTree(names_1[0])
+# for name in names_1:
+#     bst.insert(name)
+
+# for name in names_2:
+#     if bst.contains(name):
+#         duplicates.append(name)
+
 # Replace the nested for loops below with your improvements
-for name_1 in names_1:
-    for name_2 in names_2:
-        if name_1 == name_2:
-            duplicates.append(name_1)
+# for name_1 in names_1:
+#     for name_2 in names_2:
+#         if name_1 == name_2:
+#             duplicates.append(name_1)
+
+
+
+  # 1. create Binary Search Tree using names as root Node.add()
+nameTreeOne = BinarySearchTree("Names")    
+  #2. populate tree by looping through first file   
+for firstName in names_1:
+    nameTreeOne.insert(firstName)
+  #3. loop through the second file and check to see which names from the second list are in the tree 
+  # we just created and for any that are returning true. append the name to the duplicates list. 
+for secondName in names_2:
+    if nameTreeOne.contains(secondName):
+        duplicates.append(secondName)                                                    
+      
+
 
 end_time = time.time()
 print (f"{len(duplicates)} duplicates:\n\n{', '.join(duplicates)}\n\n")
